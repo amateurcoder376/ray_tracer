@@ -59,7 +59,8 @@ class Vec3{
         Vec3 refract(const Vec3& normal,float refractive_index) const{
             float eta = 1/refractive_index;
             Vec3 N = normal.unit(), I = unit();
-            float k = 1 - eta*eta*(1 - (N.dot(I))*(N.dot(I)));
+            float cos = max(-1.0f,min(1.0f,I.dot(N)));
+            float k = 1 - eta*eta*(1 - cos*cos);
             if(k < 0) return reflect(normal);
             else return I * eta + N * (eta * (N.dot(I)) - sqrt(k));
         }
