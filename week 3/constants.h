@@ -1,5 +1,5 @@
-#ifndef RTWEEKEND_H
-#define RTWEEKEND_H
+#ifndef CONSTANTS__H
+#define CONSTANTS__H
 
 #include <cmath>
 #include <iostream>
@@ -26,8 +26,7 @@ inline double degrees_to_radians(double degrees) {
 // Common Headers
 
 #include "color.h"
-#include "interval.h"
 #include "ray.h"
 #include "vec3.h"
-
+#include "interval.h"
 #endif

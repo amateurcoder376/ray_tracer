@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cmath>
+#include<algorithm>
 #ifndef Vec3_H
 #define Vec3_H
 
@@ -56,13 +57,12 @@ class Vec3{
             float d = dot(normal),l=normal.length()*normal.length();
             return (*this - normal*(2*d/l)).unit();
         }
-        Vec3 refract(const Vec3& normal,float refractive_index) const{
-            float eta = 1/refractive_index;
-            Vec3 N = normal.unit(), I = unit();
-            float cos = max(-1.0f,min(1.0f,I.dot(N)));
-            float k = 1 - eta*eta*(1 - cos*cos);
-            if(k < 0) return reflect(normal);
-            else return I * eta + N * (eta * (N.dot(I)) - sqrt(k));
+        Vec3 refract(const Vec3& normal, float refractive_index) const{
+            float eta = 1 / refractive_index;
+            float cos = std::max(-1.0f, std::min(1.0f, this->dot(normal)));
+            float k = 1 - eta * eta * (1 - cos * cos);
+            if (k < 0) return reflect(normal);
+            else return (*this) * eta + normal * (eta * cos - sqrt(k));
         }
 
 };
