@@ -49,10 +49,7 @@ int main() {
     Vec3 pixel_delta_vertical = viewport_vertical / float(image_height);
 
     // Calculate the location of the upper left pixel
-    point3 viewport_upper_left = camera_center
-                               - Vec3(0.0f, 0.0f, (float)focal_length) 
-                               - viewport_horizontal / 2.0f 
-                               - viewport_vertical / 2.0f;
+    point3 viewport_upper_left = camera_center - Vec3(0.0f, 0.0f, (float)focal_length) - viewport_horizontal / 2.0f - viewport_vertical / 2.0f;
     point3 pixel00_location = viewport_upper_left + (pixel_delta_horizontal + pixel_delta_vertical) * 0.5f;
 
     // Render image
